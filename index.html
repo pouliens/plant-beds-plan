@@ -5,284 +5,287 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Courtyard L-Shape Raised Bed Dashboard</title>
 <style>
-:root { 
-  --bg: #f5f3ee; 
-  --panel: #ffffff; 
-  --ink: #1f2933; 
-  --muted: #6b7280; 
-  --line: #d8d2c4; 
-  --accent: #3f6f4f; 
-  --accent-2: #8a5a3c; 
-  --warn: #b45309; 
-  --good: #2f855a; 
-  --soft: #eef3ed; 
-  --brick: #b65a3c; 
-  --soil: #6b4f3f; 
-  --gravel: #b8b2a7; 
-  --wall: #d9c7b8; 
-  --path: #d1d5db; 
-} 
+:root {
+  --bg: #f5f3ee;
+  --panel: #ffffff;
+  --ink: #1f2933;
+  --muted: #6b7280;
+  --line: #d8d2c4;
+  --accent: #3f6f4f;
+  --accent-2: #8a5a3c;
+  --warn: #b45309;
+  --good: #2f855a;
+  --soft: #eef3ed;
+  --brick: #b65a3c;
+  --soil: #6b4f3f;
+  --gravel: #b8b2a7;
+  --wall: #d9c7b8;
+  --path: #d1d5db;
+}
 
-* { box-sizing: border-box; } 
+* { box-sizing: border-box; }
 
-body { 
-  margin: 0; 
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; 
-  background: var(--bg); 
-  color: var(--ink); 
-  line-height: 1.45; 
-} 
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.45;
+}
 
-header { 
-  padding: 32px clamp(18px, 4vw, 48px) 20px; 
-  border-bottom: 1px solid var(--line); 
-  background: linear-gradient(180deg, #fffaf1 0%, var(--bg) 100%); 
-} 
+header {
+  padding: 32px clamp(18px, 4vw, 48px) 20px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffaf1 0%, var(--bg) 100%);
+}
 
-h1, h2, h3 { margin: 0; line-height: 1.15; } 
+h1, h2, h3 { margin: 0; line-height: 1.15; }
 
-h1 { 
-  font-size: clamp(28px, 5vw, 42px); 
-  letter-spacing: -0.045em; 
-  max-width: 980px; 
-} 
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: -0.045em;
+  max-width: 980px;
+}
 
-h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.02em; } 
-h3 { font-size: 16px; margin-bottom: 8px; } 
-p { margin: 0; } 
+h2 { font-size: 22px; margin-bottom: 14px; letter-spacing: -0.02em; }
+h3 { font-size: 16px; margin-bottom: 8px; }
+p { margin: 0; }
 
-.subhead { 
-  margin-top: 12px; 
-  color: var(--muted); 
-  max-width: 800px; 
-  font-size: 17px; 
-} 
+.subhead {
+  margin-top: 12px;
+  color: var(--muted);
+  max-width: 800px;
+  font-size: 17px;
+}
 
-main { 
-  padding: 24px clamp(18px, 4vw, 48px) 48px; 
-  display: grid; 
-  gap: 22px; 
+.page-nav {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+main {
+  padding: 24px clamp(18px, 4vw, 48px) 48px;
+  display: grid;
+  gap: 22px;
   max-width: 1400px;
   margin: 0 auto;
-} 
+}
 
-.grid { 
-  display: grid; 
-  grid-template-columns: repeat(12, 1fr); 
-  gap: 18px; 
-} 
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
 
-.card { 
-  background: var(--panel); 
-  border: 1px solid var(--line); 
-  border-radius: 22px; 
-  padding: 24px; 
-  box-shadow: 0 10px 24px rgba(31, 41, 51, 0.06); 
-} 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
 
-.span-4 { grid-column: span 4; } 
-.span-5 { grid-column: span 5; } 
-.span-6 { grid-column: span 6; } 
-.span-7 { grid-column: span 7; } 
-.span-8 { grid-column: span 8; } 
-.span-12 { grid-column: span 12; } 
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 10px 24px rgba(31, 41, 51, 0.06);
+}
 
-.pill-row { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 8px; 
-  margin-top: 14px; 
-} 
+.span-4 { grid-column: span 4; }
+.span-5 { grid-column: span 5; }
+.span-6 { grid-column: span 6; }
+.span-7 { grid-column: span 7; }
+.span-8 { grid-column: span 8; }
+.span-12 { grid-column: span 12; }
 
-.pill { 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 6px; 
-  padding: 7px 12px; 
-  border-radius: 999px; 
-  background: var(--soft); 
-  color: var(--accent); 
-  font-size: 13px; 
-  font-weight: 650; 
-} 
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
 
-.alert { 
-  border-left: 5px solid var(--warn); 
-  background: #fff7ed; 
-  padding: 14px 16px; 
-  border-radius: 12px; 
-  color: #7c2d12; 
-  margin-top: 18px; 
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.alert {
+  border-left: 5px solid var(--warn);
+  background: #fff7ed;
+  padding: 14px 16px;
+  border-radius: 12px;
+  color: #7c2d12;
+  margin-top: 18px;
   font-size: 14px;
-} 
+}
 
-.good { 
-  border-left: 5px solid var(--good); 
-  background: #ecfdf5; 
-  color: #14532d; 
-} 
+.good {
+  border-left: 5px solid var(--good);
+  background: #ecfdf5;
+  color: #14532d;
+}
 
-.section-list { 
-  display: grid; 
-  gap: 10px; 
-  margin: 0; 
-  padding: 0; 
-  list-style: none; 
-} 
+.section-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-.section-list li { 
-  display: grid; 
-  grid-template-columns: 28px 1fr; 
-  gap: 10px; 
-  padding: 11px 0; 
-  border-bottom: 1px solid #eee7dc; 
-} 
+.section-list li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid #eee7dc;
+}
 
-.section-list li:last-child { border-bottom: 0; } 
+.section-list li:last-child { border-bottom: 0; }
 
-.num { 
-  width: 28px; 
-  height: 28px; 
-  border-radius: 50%; 
-  background: var(--accent); 
-  color: white; 
-  display: inline-grid; 
-  place-items: center; 
-  font-size: 13px; 
-  font-weight: 800; 
-} 
+.num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: inline-grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+}
 
-table { 
-  width: 100%; 
-  border-collapse: collapse; 
-  font-size: 14px; 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
   margin-top: 10px;
-} 
+}
 
-th, td { 
-  text-align: left; 
-  padding: 12px 8px; 
-  border-bottom: 1px solid #eee7dc; 
-  vertical-align: top; 
-} 
+th, td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 1px solid #eee7dc;
+  vertical-align: top;
+}
 
-th { 
-  font-size: 12px; 
-  text-transform: uppercase; 
-  letter-spacing: 0.06em; 
-  color: var(--muted); 
+th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
   padding-top: 0;
-} 
+}
 
-.tag { 
-  display: inline-block; 
-  border-radius: 999px; 
-  padding: 4px 8px; 
-  font-size: 12px; 
-  font-weight: 700; 
-  background: #f3f4f6; 
-  color: #374151; 
-  white-space: nowrap; 
-} 
+.tag {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #f3f4f6;
+  color: #374151;
+  white-space: nowrap;
+}
 
-.priority-high { background: #fee2e2; color: #991b1b; } 
-.priority-med { background: #fef3c7; color: #92400e; } 
-.priority-low { background: #dcfce7; color: #166534; } 
+.priority-high { background: #fee2e2; color: #991b1b; }
+.priority-med { background: #fef3c7; color: #92400e; }
+.priority-low { background: #dcfce7; color: #166534; }
 
-.timeline { 
-  display: grid; 
-  grid-template-columns: repeat(5, 1fr); 
-  gap: 14px; 
-  margin-top: 16px; 
-} 
+.checklist { margin-top: 10px; }
 
-.day { 
-  border: 1px solid #e7dfd1; 
-  border-radius: 16px; 
-  padding: 16px; 
-  background: #fffdf8; 
-  min-height: 132px; 
-} 
-
-.day strong { 
-  display: block; 
-  margin-bottom: 8px; 
-  color: var(--accent); 
-} 
-
-.day span { color: var(--muted); font-size: 13px; } 
-
-.checklist { margin-top: 10px; } 
-
-.checklist label { 
-  display: flex; 
-  gap: 12px; 
-  align-items: flex-start; 
-  padding: 12px 0; 
-  border-bottom: 1px solid #eee7dc; 
-  font-size: 14px; 
+.checklist label {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee7dc;
+  font-size: 14px;
   cursor: pointer;
-} 
+}
 
-.checklist label:last-child { border-bottom: none; } 
+.checklist label:last-child { border-bottom: none; }
 
-input[type="checkbox"] { 
-  width: 18px; 
-  height: 18px; 
-  accent-color: var(--accent); 
-  margin-top: 2px; 
-  flex: 0 0 auto; 
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  margin-top: 2px;
+  flex: 0 0 auto;
   cursor: pointer;
-} 
+}
 
-.cross-section { 
-  display: grid; 
-  gap: 8px; 
-  margin-top: 16px; 
-  border-radius: 18px; 
-  border: 1px solid var(--line); 
-  overflow: hidden; 
-  background: #f8fafc; 
-} 
+.cross-section {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: #f8fafc;
+}
 
-.layer { 
-  display: grid; 
-  grid-template-columns: 150px 1fr; 
-  min-height: 42px; 
-  align-items: center; 
-} 
+.layer {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  min-height: 42px;
+  align-items: center;
+}
 
-.layer b { 
-  padding: 10px 12px; 
-  font-size: 13px; 
+.layer b {
+  padding: 10px 12px;
+  font-size: 13px;
   height: 100%;
   display: flex;
   align-items: center;
-} 
+}
 
-.layer span { padding: 10px 12px; font-size: 13px; color: #374151; } 
+.layer span { padding: 10px 12px; font-size: 13px; color: #374151; }
 
-.wall-layer b { background: var(--wall); } 
-.gap-layer b { background: var(--gravel); } 
-.brick-layer b { background: var(--brick); color: white; } 
-.soil-layer b { background: var(--soil); color: white; } 
-.base-layer b { background: #9ca3af; color: white; } 
+.wall-layer b { background: var(--wall); }
+.gap-layer b { background: var(--gravel); }
+.brick-layer b { background: var(--brick); color: white; }
+.soil-layer b { background: var(--soil); color: white; }
+.base-layer b { background: #9ca3af; color: white; }
 
-footer { 
-  padding: 24px clamp(18px, 4vw, 48px) 34px; 
-  color: var(--muted); 
-  font-size: 14px; 
-  border-top: 1px solid var(--line); 
+footer {
+  padding: 24px clamp(18px, 4vw, 48px) 34px;
+  color: var(--muted);
+  font-size: 14px;
+  border-top: 1px solid var(--line);
   text-align: center;
   max-width: 1400px;
   margin: 0 auto;
-} 
+}
 
-@media (max-width: 980px) { 
-  .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; } 
-  .timeline { grid-template-columns: 1fr; } 
-  .layer { grid-template-columns: 120px 1fr; } 
-} 
+@media (max-width: 980px) {
+  .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+  .layer { grid-template-columns: 120px 1fr; }
+}
 </style>
 </head>
 <body>
@@ -297,99 +300,122 @@ footer {
     <span class="pill">Drainage required</span>
     <span class="pill">Brick/block preferred</span>
   </div>
+  <div class="page-nav" role="tablist" aria-label="Dashboard tabs">
+    <button class="tab-btn active" data-target="plan" role="tab" aria-selected="true">Plan</button>
+    <button class="tab-btn" data-target="checklists" role="tab" aria-selected="false">Checklists</button>
+  </div>
 </header>
 
 <main>
-  <section class="grid">
-    <article class="card span-7">
-      <h2>Courtyard layout</h2>
-      <canvas id="courtyardCanvas" style="width: 100%; max-width: 100%; aspect-ratio: 1 / 0.78; background: var(--path); border: 10px solid #c4a899; border-radius: 18px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); margin-bottom: 20px;"></canvas>
-    </article>
+  <section id="plan" class="tab-panel active">
+    <section class="grid">
+      <article class="card span-7">
+        <h2>Courtyard layout</h2>
+        <canvas id="courtyardCanvas" style="width: 100%; max-width: 100%; aspect-ratio: 1 / 0.78; background: var(--path); border: 10px solid #c4a899; border-radius: 18px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); margin-bottom: 20px;"></canvas>
+      </article>
 
-    <article class="card span-5">
-      <h2>Recommended build-up</h2>
-      <p>Use a freestanding brick/block bed, not soil pushed directly against the building.</p>
-      <div class="cross-section">
-        <div class="layer wall-layer"><b>Building wall</b><span>Leave untouched. Do not bridge damp proof course or cover air bricks.</span></div>
-        <div class="layer gap-layer"><b>Dry gap</b><span>50–100mm gravel inspection gap between wall and bed.</span></div>
-        <div class="layer brick-layer"><b>Inner wall</b><span>Freestanding brick/block wall in front of the building wall.</span></div>
-        <div class="layer soil-layer"><b>Soil zone</b><span>Topsoil + peat-free compost + grit. Line sides, not bottom.</span></div>
-        <div class="layer base-layer"><b>Drainage base</b><span>Coarse gravel/rubble over existing paving/concrete, with weep holes.</span></div>
-      </div>
-      <div class="alert">
-        <strong>Warning:</strong> Keep finished soil level at least 150mm below the damp proof course. Do not block vents, drains, air bricks or inspection covers.
-      </div>
-    </article>
+      <article class="card span-5">
+        <h2>Recommended build-up</h2>
+        <p>Use a freestanding brick/block bed, not soil pushed directly against the building.</p>
+        <div class="cross-section">
+          <div class="layer wall-layer"><b>Building wall</b><span>Leave untouched. Do not bridge damp proof course or cover air bricks.</span></div>
+          <div class="layer gap-layer"><b>Dry gap</b><span>50–100mm gravel inspection gap between wall and bed.</span></div>
+          <div class="layer brick-layer"><b>Inner wall</b><span>Freestanding brick/block wall in front of the building wall.</span></div>
+          <div class="layer soil-layer"><b>Soil zone</b><span>Topsoil + peat-free compost + grit. Line sides, not bottom.</span></div>
+          <div class="layer base-layer"><b>Drainage base</b><span>Coarse gravel/rubble over existing paving/concrete, with weep holes.</span></div>
+        </div>
+        <div class="alert">
+          <strong>Warning:</strong> Keep finished soil level at least 150mm below the damp proof course. Do not block vents, drains, air bricks or inspection covers.
+        </div>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="card span-4"><h2>Dimensions</h2><table><tr><th>Item</th><th>Recommended</th></tr><tr><td>Bed width</td><td>300–450mm from wall to front edge</td></tr><tr><td>Bed height</td><td>300–450mm high</td></tr><tr><td>Dry gap</td><td>50–100mm behind bed</td></tr><tr><td>DPC clearance</td><td>Soil at least 150mm below DPC</td></tr><tr><td>Drainage gaps</td><td>Weep holes / open vertical joints near base</td></tr></table></article>
+      <article class="card span-4"><h2>Soil mix</h2><table><tr><th>Ingredient</th><th>Amount</th></tr><tr><td>Topsoil</td><td>50%</td></tr><tr><td>Peat-free compost</td><td>30%</td></tr><tr><td>Horticultural grit / sharp sand</td><td>20%</td></tr><tr><td>Gravel base</td><td>50–100mm layer</td></tr><tr><td>Dry gap gravel</td><td>Fill gap, keep loose and inspectable</td></tr></table><div class="alert good">For lavender, rosemary and thyme, use more grit and less compost.</div></article>
+      <article class="card span-4"><h2>Planting ideas</h2><table><tr><th>Condition</th><th>Plants</th></tr><tr><td>Sunny</td><td>Lavender, rosemary, thyme, sedum, grasses</td></tr><tr><td>Part shade</td><td>Heuchera, geranium, carex, ferns</td></tr><tr><td>Shady wall</td><td>Hellebores, ferns, ivy-leaf cyclamen, hosta</td></tr><tr><td>Low maintenance</td><td>Evergreen shrubs, grasses, hardy perennials</td></tr></table></article>
+    </section>
+
+    <section class="grid">
+      <article class="card span-6">
+        <h2>Materials list</h2>
+        <table>
+          <tr><th>Material</th><th>Use</th><th>Priority</th></tr>
+          <tr><td>Engineering / frost-resistant bricks</td><td>Visible bed walls</td><td><span class="tag priority-high">Essential</span></td></tr>
+          <tr><td>Concrete blocks</td><td>Optional hidden structure / cheaper core</td><td><span class="tag priority-med">Optional</span></td></tr>
+          <tr><td>Mortar mix or sand + cement</td><td>Brick/block laying</td><td><span class="tag priority-high">Essential</span></td></tr>
+          <tr><td>Coarse gravel / pea shingle</td><td>Drainage layer and wall gap</td><td><span class="tag priority-high">Essential</span></td></tr>
+          <tr><td>Geotextile fabric</td><td>Stops soil clogging drainage</td><td><span class="tag priority-med">Recommended</span></td></tr>
+          <tr><td>DPM / root barrier / pond liner</td><td>Line soil-facing wall sides</td><td><span class="tag priority-med">Recommended</span></td></tr>
+          <tr><td>Coping stones or brick-on-edge</td><td>Neater finish and rain protection</td><td><span class="tag priority-low">Nice to have</span></td></tr>
+          <tr><td>Topsoil, peat-free compost, grit</td><td>Growing medium</td><td><span class="tag priority-high">Essential</span></td></tr>
+        </table>
+      </article>
+
+      <article class="card span-6">
+        <h2>Build sequence</h2>
+        <ol class="section-list">
+          <li><span class="num">1</span><p><strong>Survey walls.</strong><br>Find DPC, vents, air bricks, drain covers and any slope toward the house.</p></li>
+          <li><span class="num">2</span><p><strong>Mark the L‑shape.</strong><br>Leave a 50–100mm dry gap along both walls and keep enough walking space.</p></li>
+          <li><span class="num">3</span><p><strong>Prepare base.</strong><br>Clean paving/concrete. Create a level mortar bed or shallow foundation strip if needed.</p></li>
+          <li><span class="num">4</span><p><strong>Build walls.</strong><br>Build front wall and inner wall as freestanding brick/block structure.</p></li>
+          <li><span class="num">5</span><p><strong>Add drainage.</strong><br>Use weep holes/open vertical joints low down, backed with gravel and geotextile.</p></li>
+          <li><span class="num">6</span><p><strong>Line sides.</strong><br>Line soil-facing sides only. Do not fully seal the bottom.</p></li>
+          <li><span class="num">7</span><p><strong>Fill and plant.</strong><br>Add gravel base, soil mix, then plants. Keep the wall gap clear.</p></li>
+        </ol>
+      </article>
+    </section>
   </section>
 
-  <section class="grid">
-    <article class="card span-4">
-      <h2>Dimensions</h2>
-      <table>
-        <tr><th>Item</th><th>Recommended</th></tr>
-        <tr><td>Bed width</td><td>300–450mm from wall to front edge</td></tr>
-        <tr><td>Bed height</td><td>300–450mm high</td></tr>
-        <tr><td>Dry gap</td><td>50–100mm behind bed</td></tr>
-        <tr><td>DPC clearance</td><td>Soil at least 150mm below DPC</td></tr>
-        <tr><td>Drainage gaps</td><td>Weep holes / open vertical joints near base</td></tr>
-      </table>
-    </article>
-
-    <article class="card span-4">
-      <h2>Soil mix</h2>
-      <table>
-        <tr><th>Ingredient</th><th>Amount</th></tr>
-        <tr><td>Topsoil</td><td>50%</td></tr>
-        <tr><td>Peat-free compost</td><td>30%</td></tr>
-        <tr><td>Horticultural grit / sharp sand</td><td>20%</td></tr>
-        <tr><td>Gravel base</td><td>50–100mm layer</td></tr>
-        <tr><td>Dry gap gravel</td><td>Fill gap, keep loose and inspectable</td></tr>
-      </table>
-      <div class="alert good">For lavender, rosemary and thyme, use more grit and less compost.</div>
-    </article>
-
-    <article class="card span-4">
-      <h2>Planting ideas</h2>
-      <table>
-        <tr><th>Condition</th><th>Plants</th></tr>
-        <tr><td>Sunny</td><td>Lavender, rosemary, thyme, sedum, grasses</td></tr>
-        <tr><td>Part shade</td><td>Heuchera, geranium, carex, ferns</td></tr>
-        <tr><td>Shady wall</td><td>Hellebores, ferns, ivy-leaf cyclamen, hosta</td></tr>
-        <tr><td>Low maintenance</td><td>Evergreen shrubs, grasses, hardy perennials</td></tr>
-      </table>
-    </article>
+  <section id="checklists" class="tab-panel" aria-hidden="true">
+    <section class="grid">
+      <article class="card span-12">
+        <h2>Best approach (UK + B&amp;Q friendly)</h2>
+        <ol class="section-list">
+          <li><span class="num">1</span><p><strong>Measure first, then buy once.</strong><br>Measure both wall runs, decide bed height (300–450mm), and calculate brick/soil volumes before ordering.</p></li>
+          <li><span class="num">2</span><p><strong>Split into two trips or one delivery.</strong><br>At B&amp;Q, pre-order heavy items (bricks, gravel, topsoil) for delivery; collect small items/tools in store.</p></li>
+          <li><span class="num">3</span><p><strong>Build structure before planting spend.</strong><br>Complete wall, drainage and dry gap first; only then buy plants so they are not sitting in pots too long.</p></li>
+        </ol>
+        <div class="alert good">Tip: keep ~10% contingency for breakages/cuts and an extra bag of mortar and gravel.</div>
+      </article>
+    </section>
+    <section class="grid">
+      <article class="card span-4">
+        <h2>Buy checklist</h2>
+        <div class="checklist">
+          <label><input type="checkbox">Engineering/facing bricks (plus 10% spare)</label>
+          <label><input type="checkbox">Mortar or sharp sand + cement</label>
+          <label><input type="checkbox">Coarse gravel/pea shingle (base + dry gap)</label>
+          <label><input type="checkbox">Geotextile membrane</label>
+          <label><input type="checkbox">Root barrier / DPM / pond liner for side lining</label>
+          <label><input type="checkbox">Topsoil + peat-free compost + horticultural grit</label>
+          <label><input type="checkbox">Optional coping stones/brick-on-edge finish</label>
+        </div>
+      </article>
+      <article class="card span-4">
+        <h2>Prepare checklist</h2>
+        <div class="checklist">
+          <label><input type="checkbox">Locate DPC, air bricks, drains, vents and access covers</label>
+          <label><input type="checkbox">Mark bed lines + maintain 50–100mm wall gap</label>
+          <label><input type="checkbox">Set finished soil level 150mm below DPC</label>
+          <label><input type="checkbox">Clean and level base; check no slope toward house</label>
+          <label><input type="checkbox">Dry-lay first brick course to check fit</label>
+          <label><input type="checkbox">Set weep hole positions near base</label>
+        </div>
+      </article>
+      <article class="card span-4">
+        <h2>Build checklist</h2>
+        <div class="checklist">
+          <label><input type="checkbox">Lay first course level and square</label>
+          <label><input type="checkbox">Build walls to 300–450mm high</label>
+          <label><input type="checkbox">Install drainage layer and keep weep holes clear</label>
+          <label><input type="checkbox">Line soil-facing sides only (not bottom)</label>
+          <label><input type="checkbox">Fill with soil mix and water in</label>
+          <label><input type="checkbox">Plant and keep wall inspection gap clear</label>
+        </div>
+      </article>
+    </section>
   </section>
-
-  <section class="grid">
-    <article class="card span-6">
-      <h2>Materials list</h2>
-      <table>
-        <tr><th>Material</th><th>Use</th><th>Priority</th></tr>
-        <tr><td>Engineering / frost-resistant bricks</td><td>Visible bed walls</td><td><span class="tag priority-high">Essential</span></td></tr>
-        <tr><td>Concrete blocks</td><td>Optional hidden structure / cheaper core</td><td><span class="tag priority-med">Optional</span></td></tr>
-        <tr><td>Mortar mix or sand + cement</td><td>Brick/block laying</td><td><span class="tag priority-high">Essential</span></td></tr>
-        <tr><td>Coarse gravel / pea shingle</td><td>Drainage layer and wall gap</td><td><span class="tag priority-high">Essential</span></td></tr>
-        <tr><td>Geotextile fabric</td><td>Stops soil clogging drainage</td><td><span class="tag priority-med">Recommended</span></td></tr>
-        <tr><td>DPM / root barrier / pond liner</td><td>Line soil-facing wall sides</td><td><span class="tag priority-med">Recommended</span></td></tr>
-        <tr><td>Coping stones or brick-on-edge</td><td>Neater finish and rain protection</td><td><span class="tag priority-low">Nice to have</span></td></tr>
-        <tr><td>Topsoil, peat-free compost, grit</td><td>Growing medium</td><td><span class="tag priority-high">Essential</span></td></tr>
-      </table>
-    </article>
-
-    <article class="card span-6">
-      <h2>Build sequence</h2>
-      <ol class="section-list">
-        <li><span class="num">1</span><p><strong>Survey walls.</strong><br>Find DPC, vents, air bricks, drain covers and any slope toward the house.</p></li>
-        <li><span class="num">2</span><p><strong>Mark the L‑shape.</strong><br>Leave a 50–100mm dry gap along both walls and keep enough walking space.</p></li>
-        <li><span class="num">3</span><p><strong>Prepare base.</strong><br>Clean paving/concrete. Create a level mortar bed or shallow foundation strip if needed.</p></li>
-        <li><span class="num">4</span><p><strong>Build walls.</strong><br>Build front wall and inner wall as freestanding brick/block structure.</p></li>
-        <li><span class="num">5</span><p><strong>Add drainage.</strong><br>Use weep holes/open vertical joints low down, backed with gravel and geotextile.</p></li>
-        <li><span class="num">6</span><p><strong>Line sides.</strong><br>Line soil-facing sides only. Do not fully seal the bottom.</p></li>
-        <li><span class="num">7</span><p><strong>Fill and plant.</strong><br>Add gravel base, soil mix, then plants. Keep the wall gap clear.</p></li>
-      </ol>
-    </article>
-  </section>
-
 </main>
 
 <footer>
@@ -398,89 +424,71 @@ footer {
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.target;
+        buttons.forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        panels.forEach((panel) => {
+          const show = panel.id === target;
+          panel.classList.toggle('active', show);
+          panel.setAttribute('aria-hidden', String(!show));
+        });
+      });
+    });
+
     const canvas = document.getElementById('courtyardCanvas');
     const ctx = canvas.getContext('2d');
-
     const baseWidth = 600;
     const baseHeight = 468;
     const dpr = window.devicePixelRatio || 1;
     canvas.width = baseWidth * dpr;
     canvas.height = baseHeight * dpr;
     ctx.scale(dpr, dpr);
-
-    // 1. Gravel Gap
     ctx.fillStyle = '#b8b2a7';
-    ctx.fillRect(30, 30, 540, 20); // Top gap
-    ctx.fillRect(550, 30, 20, 380); // Right gap
-
-    // 2. Brick Wall
+    ctx.fillRect(30, 30, 540, 20);
+    ctx.fillRect(550, 30, 20, 380);
     ctx.fillStyle = '#b65a3c';
-    ctx.beginPath();
-    ctx.roundRect(30, 50, 520, 100, 8); // Top wall
-    ctx.fill();
-    ctx.beginPath();
-    ctx.roundRect(450, 50, 100, 360, 8); // Right wall
-    ctx.fill();
-
-    // 3. Soil Zone
+    ctx.beginPath(); ctx.roundRect(30, 50, 520, 100, 8); ctx.fill();
+    ctx.beginPath(); ctx.roundRect(450, 50, 100, 360, 8); ctx.fill();
     ctx.fillStyle = '#6b4f3f';
-    ctx.fillRect(40, 60, 500, 80); // Top soil
-    ctx.fillRect(460, 60, 80, 340); // Right soil
+    ctx.fillRect(40, 60, 500, 80);
+    ctx.fillRect(460, 60, 80, 340);
 
-    // 4. Plants
     const drawPlant = (x, y) => {
-      ctx.beginPath();
-      ctx.arc(x, y, 14, 0, Math.PI * 2);
-      ctx.fillStyle = '#477a4b';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(x - 4, y + 4, 10, 0, Math.PI * 2);
-      ctx.fillStyle = '#355f3d';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(x + 4, y - 4, 8, 0, Math.PI * 2);
-      ctx.fillStyle = '#7ab46c';
-      ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, 14, 0, Math.PI * 2); ctx.fillStyle = '#477a4b'; ctx.fill();
+      ctx.beginPath(); ctx.arc(x - 4, y + 4, 10, 0, Math.PI * 2); ctx.fillStyle = '#355f3d'; ctx.fill();
+      ctx.beginPath(); ctx.arc(x + 4, y - 4, 8, 0, Math.PI * 2); ctx.fillStyle = '#7ab46c'; ctx.fill();
     };
-
     drawPlant(120, 100); drawPlant(240, 100); drawPlant(360, 100);
     drawPlant(480, 100); drawPlant(500, 210); drawPlant(500, 320);
 
-    // 5. Labels
     const drawLabel = (text, x, y, rotate = false, isAccent = false) => {
-      ctx.save();
-      ctx.translate(x, y);
-      if (rotate) ctx.rotate(-Math.PI / 2);
+      ctx.save(); ctx.translate(x, y); if (rotate) ctx.rotate(-Math.PI / 2);
       ctx.font = 'bold 13px Inter, sans-serif';
       const textWidth = ctx.measureText(text).width;
       ctx.fillStyle = 'rgba(255, 255, 255, 0.86)';
-      ctx.beginPath();
-      ctx.roundRect(-textWidth / 2 - 10, -14, textWidth + 20, 24, 12);
-      ctx.fill();
-      ctx.strokeStyle = '#d8d2c4';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.fillStyle = isAccent ? '#3f6f4f' : '#8a5a3c';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(text, 0, -1);
-      ctx.restore();
+      ctx.beginPath(); ctx.roundRect(-textWidth / 2 - 10, -14, textWidth + 20, 24, 12); ctx.fill();
+      ctx.strokeStyle = '#d8d2c4'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.fillStyle = isAccent ? '#3f6f4f' : '#8a5a3c'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(text, 0, -1); ctx.restore();
     };
 
     drawLabel("Building wall", baseWidth / 2, 15);
     drawLabel("Building wall", 585, baseHeight / 2, true);
     drawLabel("50–100mm dry gap", 450, 40);
     drawLabel("L‑shape raised bed", 460, 430, false, true);
-
-    // Bottom Left Open Area Label
     ctx.fillStyle = 'rgba(255, 255, 255, 0.76)';
-    ctx.beginPath();
-    ctx.roundRect(20, 410, 210, 30, 8);
-    ctx.fill();
-    ctx.fillStyle = '#4b5563';
-    ctx.font = '13px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
+    ctx.beginPath(); ctx.roundRect(20, 410, 210, 30, 8); ctx.fill();
+    ctx.fillStyle = '#4b5563'; ctx.font = '13px Inter, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText("Open courtyard / walking space", 125, 425);
   });
 </script>
